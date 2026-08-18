@@ -1,0 +1,138 @@
+
+---
+interface Props {
+  title: string;
+  date: Date;
+  description: string;
+  slug: string;
+  tags?: string[];
+}
+
+const { title, date, description, slug, tags = [] } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('pt-BR', {
+  year: 'numeric',
+  month: 'short',
+  day: '2-digit',
+});
+---
+
+<article class="post-card">
+  <a href={`/posts/${slug}`} class="post-link">
+    <div class="post-header">
+      <span class="post-prompt text-muted">&gt;</span>
+      <span class="post-command text-cyan">cat</span>
+      <span class="post-title">{title}</span>
+    </div>
+    <p class="post-description">{description}</p>
+    <div class="post-meta">
+      <span class="post-date">
+        <span class="text-muted">[</span>
+        <span class="text-yellow">{formattedDate}</span>
+        <span class="text-muted">]</span>
+      </span>
+      {tags.length > 0 && (
+        <div class="post-tags">
+          {tags.map((tag) => (
+            <span class="tag">#{tag}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  </a>
+</article>
+
+<style>
+  .post-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+    animation: slideIn 0.5s ease forwards;
+    opacity: 0;
+  }
+
+  .post-card:hover {
+    border-color: var(--accent-green);
+    transform: translateX(5px);
+  }
+
+  .post-link {
+    display: block;
+    padding: var(--spacing-lg);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-link:hover {
+    text-decoration: none;
+  }
+
+  .post-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .post-prompt {
+    font-weight: bold;
+  }
+
+  .post-command {
+    font-weight: 600;
+  }
+
+  .post-title {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    transition: color var(--transition-fast);
+  }
+
+  .post-card:hover .post-title {
+    color: var(--accent-green);
+  }
+
+  .post-description {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.5;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .post-date {
+    font-size: var(--font-size-sm);
+  }
+
+  .post-tags {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    color: var(--accent-magenta);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Staggered animation */
+  .post-card:nth-child(1) { animation-delay: 0.1s; }
+  .post-card:nth-child(2) { animation-delay: 0.2s; }
+  .post-card:nth-child(3) { animation-delay: 0.3s; }
+  .post-card:nth-child(4) { animation-delay: 0.4s; }
+  .post-card:nth-child(5) { animation-delay: 0.5s; }
+  .post-card:nth-child(6) { animation-delay: 0.6s; }
+  .post-card:nth-child(7) { animation-delay: 0.7s; }
+  .post-card:nth-child(8) { animation-delay: 0.8s; }
+  .post-card:nth-child(9) { animation-delay: 0.9s; }
+  .post-card:nth-child(10) { animation-delay: 1s; }
+</style>

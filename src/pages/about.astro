@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TerminalWindow from '../components/TerminalWindow.astro';
+---
+
+<Layout title="Its me Edu | duzera blog" description="Sobre mim - Eduardo, desenvolvedor e entusiasta de tecnologia.">
+  <div class="container">
+    <section class="about-section">
+      <header class="about-header">
+        <div class="header-prompt">
+          <span class="text-muted">&gt;</span>
+          <span class="text-cyan">cat</span>
+          <span>./about.md</span>
+        </div>
+        <h1 class="about-title">
+          <span class="text-green">Its me Edu</span>
+          <span class="cursor"></span>
+        </h1>
+      </header>
+
+      <TerminalWindow title="~/about.md">
+        <div class="about-content">
+          <div class="intro-line">
+            <span class="text-muted">&gt;</span>
+            <span class="text-cyan">echo</span>
+            <span class="text-yellow">"Olá, mundo!"</span>
+          </div>
+
+          <div class="bio">
+            <p>
+              Sou o <strong class="text-green">Edu</strong>, um desenvolvedor apaixonado por
+              código limpo, sistemas bem arquitetados e aquele café forte que
+              mantém a criatividade fluindo.
+            </p>
+
+            <p>
+              Este blog é o <span class="text-cyan">duzera blog</span> — meu espaço
+              onde compartilho pensamentos sobre tecnologia, programação e as
+              aventuras do dia a dia de quem vive entre terminais e IDEs.
+            </p>
+
+            <h2>
+              <span class="text-muted">##</span>
+              <span class="text-green">Filosofia</span>
+            </h2>
+
+            <blockquote>
+              "Código é poesia, e todo bug é apenas uma rima que ainda não encontrou seu verso."
+            </blockquote>
+
+            <p>
+              Acredito em aprendizado contínuo, comunidade open source e
+              que a melhor forma de crescer é compartilhando conhecimento.
+            </p>
+
+            <h2>
+              <span class="text-muted">##</span>
+              <span class="text-green">Contato</span>
+            </h2>
+
+            <div class="contact-section">
+              <div class="contact-line">
+                <span class="text-muted">&gt;</span>
+                <span class="text-cyan">email:</span>
+                <a href="mailto:edu@duzeradev.com.br">edu@duzeradev.com.br</a>
+              </div>
+              <div class="contact-line">
+                <span class="text-muted">&gt;</span>
+                <span class="text-cyan">github:</span>
+                <a href="https://github.com/eduardonk9999" target="_blank" rel="noopener">@eduardonk9999</a>
+              </div>
+              <div class="contact-line">
+                <span class="text-muted">&gt;</span>
+                <span class="text-cyan">linkedin:</span>
+                <a href="https://www.linkedin.com/in/eduardo-alves-537963160/" target="_blank" rel="noopener">Eduardo Alves</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="outro-line">
+            <span class="text-muted">&gt;</span>
+            <span class="text-green">exit 0</span>
+            <span class="text-muted"># Até a próxima!</span>
+          </div>
+        </div>
+      </TerminalWindow>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .about-section {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .about-header {
+    margin-bottom: var(--spacing-xl);
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  .header-prompt {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+  }
+
+  .about-title {
+    font-size: var(--font-size-2xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1em;
+    background-color: var(--accent-green);
+    animation: blink 1s infinite;
+  }
+
+  .about-content {
+    animation: fadeIn 0.8s ease 0.2s forwards;
+    opacity: 0;
+  }
+
+  .intro-line {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-lg);
+  }
+
+  .bio {
+    line-height: 1.8;
+  }
+
+  .bio p {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .bio h2 {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px dashed var(--text-muted);
+  }
+
+  .stack-section,
+  .contact-section {
+    margin: var(--spacing-md) 0;
+    padding-left: var(--spacing-md);
+  }
+
+  .stack-line,
+  .contact-line {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .bio blockquote {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--bg-primary);
+    border-radius: var(--border-radius);
+  }
+
+  .outro-line {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px dashed var(--text-muted);
+    font-size: var(--font-size-lg);
+  }
+
+  @media (max-width: 768px) {
+    .about-title {
+      font-size: var(--font-size-xl);
+    }
+  }
+</style>

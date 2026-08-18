@@ -1,0 +1,107 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="logo">
+        <span class="prompt-user">edu</span><span class="prompt-symbol">@</span><span class="prompt-path">blog</span><span class="prompt-symbol">:~$</span>
+        <span class="cursor-blink"></span>
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="/" class:list={[{ active: currentPath === '/' }]}>
+            <span class="text-muted">./</span>home
+          </a>
+        </li>
+        <li>
+          <a href="/about" class:list={[{ active: currentPath === '/about' }]}>
+            <span class="text-muted">./</span>about
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--text-muted);
+    padding: var(--spacing-md) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+
+  .logo {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .logo:hover {
+    text-decoration: none;
+  }
+
+  .cursor-blink {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    margin-left: 4px;
+  }
+
+  .cursor-blink::after {
+    content: '█';
+    animation: blink 1s infinite;
+    color: var(--accent-green);
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-lg);
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    color: var(--text-primary);
+    font-size: var(--font-size-base);
+    transition: color var(--transition-fast);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--accent-green);
+    text-decoration: none;
+  }
+
+  .nav-links a.active {
+    border-bottom: 2px solid var(--accent-green);
+  }
+
+  @media (max-width: 480px) {
+    .nav {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .nav-links {
+      gap: var(--spacing-md);
+    }
+  }
+</style>

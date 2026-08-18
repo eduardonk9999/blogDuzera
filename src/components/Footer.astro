@@ -1,0 +1,80 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <p class="copyright">
+        <span class="text-muted">&gt;</span>
+        <span class="text-green">{currentYear}</span>
+        <span class="text-muted">|</span>
+        duzera blog
+        <span class="text-muted">|</span>
+        <span class="text-cyan">edu</span>
+      </p>
+      <div class="social-links">
+        <a href="https://github.com/eduardonk9999" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          [github]
+        </a>
+        <a href="https://www.linkedin.com/in/eduardo-alves-537963160/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          [linkedin]
+        </a>
+      </div>
+    </div>
+    <p class="footer-note text-muted">
+      &gt; echo "Built with Astro + Terminal vibes"
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--text-muted);
+    padding: var(--spacing-xl) 0;
+    margin-top: auto;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .copyright {
+    margin: 0;
+    font-size: var(--font-size-sm);
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .social-links a {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    transition: color var(--transition-fast);
+  }
+
+  .social-links a:hover {
+    color: var(--accent-green);
+    text-decoration: none;
+  }
+
+  .footer-note {
+    font-size: var(--font-size-sm);
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

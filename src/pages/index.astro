@@ -1,0 +1,113 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import PostCard from '../components/PostCard.astro';
+import TerminalWindow from '../components/TerminalWindow.astro';
+
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+const sortedPosts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout>
+  <div class="container">
+    <section class="hero">
+      <div class="hero-prompt">
+        <span class="text-muted">&gt;</span>
+        <span class="text-cyan">whoami</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="text-green">duzera blog</span>
+      </h1>
+      <p class="hero-description">
+        Meu espaço na internet.
+        <br />
+        <span class="text-muted">Pensamentos, código e café.</span>
+      </p>
+    </section>
+
+    <section class="posts-section">
+      <div class="section-header">
+        <span class="text-muted">&gt;</span>
+        <span class="text-cyan">ls</span>
+        <span class="text-yellow">-la</span>
+        <span>./posts/</span>
+      </div>
+
+      {sortedPosts.length > 0 ? (
+        <div class="posts-list">
+          {sortedPosts.map((post) => (
+            <PostCard
+              title={post.data.title}
+              date={post.data.date}
+              description={post.data.description}
+              slug={post.id}
+              tags={post.data.tags}
+            />
+          ))}
+        </div>
+      ) : (
+        <TerminalWindow title="~/posts">
+          <p class="empty-message">
+            <span class="text-muted">&gt;</span>
+            <span class="text-yellow">Nenhum post encontrado.</span>
+            <br />
+            <span class="text-muted">&gt; echo "Em breve..."</span>
+          </p>
+        </TerminalWindow>
+      )}
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: var(--spacing-2xl) 0;
+    margin-bottom: var(--spacing-xl);
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  .hero-prompt {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-primary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .posts-section {
+    margin-top: var(--spacing-xl);
+  }
+
+  .section-header {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--text-muted);
+  }
+
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .empty-message {
+    line-height: 2;
+  }
+</style>

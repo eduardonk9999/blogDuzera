@@ -1,0 +1,188 @@
+---
+import Layout from './Layout.astro';
+import TerminalWindow from '../components/TerminalWindow.astro';
+
+interface Props {
+  title: string;
+  date: Date;
+  description: string;
+  tags?: string[];
+}
+
+const { title, date, description, tags = [] } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('pt-BR', {
+  year: 'numeric',
+  month: 'long',
+  day: '2-digit',
+});
+---
+
+<Layout title={`${title} | duzera blog`} description={description}>
+  <div class="container">
+    <article class="post">
+      <header class="post-header">
+        <div class="post-meta">
+          <span class="post-date">
+            <span class="text-muted">&gt; date:</span>
+            <span class="text-yellow">{formattedDate}</span>
+          </span>
+          {tags.length > 0 && (
+            <div class="post-tags">
+              <span class="text-muted">&gt; tags:</span>
+              {tags.map((tag) => (
+                <span class="tag">#{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+        <h1 class="post-title">
+          <span class="title-prefix text-muted">&gt; </span>
+          <span class="title-text">{title}</span>
+          <span class="title-cursor"></span>
+        </h1>
+      </header>
+
+      <TerminalWindow title={`~/posts/${title.toLowerCase().replace(/\s+/g, '-')}.md`}>
+        <div class="post-content">
+          <slot />
+        </div>
+      </TerminalWindow>
+
+      <footer class="post-footer">
+        <a href="/" class="back-link">
+          <span class="text-muted">&gt;</span>
+          <span class="text-cyan">cd</span>
+          <span>../home</span>
+        </a>
+      </footer>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .post {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .post-header {
+    margin-bottom: var(--spacing-xl);
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  .post-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-sm);
+  }
+
+  .post-date {
+    display: flex;
+    gap: var(--spacing-sm);
+  }
+
+  .post-tags {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .tag {
+    color: var(--accent-magenta);
+  }
+
+  .post-title {
+    font-size: var(--font-size-2xl);
+    color: var(--text-primary);
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .title-text {
+    color: var(--accent-green);
+    overflow: hidden;
+    animation: typewriter 1s steps(30) forwards;
+    white-space: nowrap;
+  }
+
+  .title-cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1em;
+    background-color: var(--accent-green);
+    margin-left: 4px;
+    animation: blink 1s infinite;
+  }
+
+  .post-content {
+    animation: fadeIn 0.8s ease 0.3s forwards;
+    opacity: 0;
+  }
+
+  .post-content :global(h2) {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: 1px dashed var(--text-muted);
+  }
+
+  .post-content :global(h2::before) {
+    content: '## ';
+    color: var(--accent-cyan);
+  }
+
+  .post-content :global(h3::before) {
+    content: '### ';
+    color: var(--accent-cyan);
+  }
+
+  .post-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin: var(--spacing-md) 0;
+  }
+
+  .post-content :global(hr) {
+    border: none;
+    border-top: 1px dashed var(--text-muted);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .post-footer {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--text-muted);
+  }
+
+  .back-link {
+    display: inline-flex;
+    gap: var(--spacing-sm);
+    color: var(--text-primary);
+    transition: color var(--transition-fast);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+  }
+
+  .back-link:hover {
+    color: var(--accent-green);
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .post-title {
+      font-size: var(--font-size-xl);
+    }
+
+    .title-text {
+      animation: none;
+      white-space: normal;
+    }
+  }
+</style>
