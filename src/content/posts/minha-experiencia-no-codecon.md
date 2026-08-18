@@ -8,6 +8,8 @@ draft: false
 
 No último sábado, dia 15, tive a oportunidade de participar do **Codecon**. Foi minha primeira vez no evento e foi muito legal ver várias pessoas da comunidade que só vejo por posts do LinkedIn e Instagram, interagindo e compartilhando ideias.
 
+![Crachá do Codecon Summit 26](/images/posts/codecon-cracha.jpg)
+
 ## Aprendizado
 
 Tive a oportunidade de aprimorar meus conhecimentos e aprender coisas novas, principalmente sobre:
