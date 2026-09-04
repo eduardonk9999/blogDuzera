@@ -1,6 +1,6 @@
 ---
 title: "LangChain: Entendendo Cadeias (Chains)"
-date: 2026-09-03
+date: 2026-09-04
 description: "Como criar cadeias (chains) poderosas combinando componentes no LangChain"
 tags: ["python", "ia", "langchain", "llm"]
 draft: false
