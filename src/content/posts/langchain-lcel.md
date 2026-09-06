@@ -1,9 +1,9 @@
 ---
 title: "LangChain: LCEL (LangChain Expression Language)"
-date: 2026-09-03
+date: 2026-09-06
 description: "Domine a sintaxe declarativa do LangChain para compor cadeias de forma elegante"
 tags: ["python", "ia", "langchain", "llm"]
-draft: true
+draft: false
 ---
 
 ## O que é LCEL?
