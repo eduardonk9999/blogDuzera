@@ -1,9 +1,9 @@
 ---
 title: "LangChain: Memória em Conversas"
-date: 2026-09-03
+date: 2026-09-07
 description: "Como manter contexto entre mensagens usando memória no LangChain"
 tags: ["python", "ia", "langchain", "llm"]
-draft: true
+draft: false
 ---
 
 ## Por que memória?
