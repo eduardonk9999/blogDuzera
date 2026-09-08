@@ -1,9 +1,9 @@
 ---
 title: "LangChain: Orquestração com LangGraph"
-date: 2026-09-03
+date: 2026-09-08
 description: "Como criar fluxos complexos e agentes com LangGraph"
 tags: ["python", "ia", "langchain", "llm", "langgraph"]
-draft: true
+draft: false
 ---
 
 ## O que é orquestração?
