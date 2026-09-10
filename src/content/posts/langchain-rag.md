@@ -1,9 +1,9 @@
 ---
 title: "LangChain: RAG (Retrieval Augmented Generation)"
-date: 2026-09-03
+date: 2026-09-10
 description: "Como criar aplicações que consultam documentos usando RAG"
 tags: ["python", "ia", "langchain", "llm", "rag"]
-draft: true
+draft: false
 ---
 
 ## O que é RAG?
